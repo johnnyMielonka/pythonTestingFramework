@@ -13,7 +13,7 @@ class WebdriverFactory():
                 # safari_options.add_argument("start-maximized")
                 driver = webdriver.Safari(options=safari_options)
             case _:
-                raise ValueError('Unknown browser name')
+                raise ValueError(f'Unknown browser name {browser}')
         print(f"{browser} driver started")
         return driver
 

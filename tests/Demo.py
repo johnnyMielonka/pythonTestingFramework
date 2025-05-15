@@ -13,14 +13,14 @@ def test_browserstack(browser: str):
     sign_in_page = SignInPage(driver)
 
     homepage.click_sign_in()
-    sign_in_page.select_username()
-    sign_in_page.select_password()
+    sign_in_page.select_username("test")
+    sign_in_page.select_password("aaa")
     sign_in_page.click_login()
     print(f"PASS!!\n")
 
     driver.quit()
 
 if __name__ == "__main__":
-    browsers: list=["chrome", "safari", "error"]
+    browsers: list=("chrome", "safari", "error")
     for browser in browsers:
         test_browserstack(browser)
