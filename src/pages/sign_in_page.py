@@ -1,4 +1,5 @@
 from seleniumpagefactory.Pagefactory import PageFactory
+from src.core import helpers
 
 class SignInPage(PageFactory):
     def __init__(self, driver):
@@ -17,4 +18,5 @@ class SignInPage(PageFactory):
         self.password.set_text(f'{password}\n')
 
     def click_login(self) -> None:
-        self.login_btn.click()
+        self.driver, helpers.get_webelement_by_text(self.driver, "//button[@id='%s']", "login-btn").click
+        # self.login_btn.click()
