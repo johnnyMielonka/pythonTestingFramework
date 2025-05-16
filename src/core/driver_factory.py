@@ -14,6 +14,8 @@ class WebdriverFactory():
                 driver = webdriver.Safari(options=safari_options)
             case _:
                 raise ValueError(f'Unknown browser name {browser}')
+            
+        driver.implicitly_wait(10)
         print(f"{browser} driver started")
         return driver
 
