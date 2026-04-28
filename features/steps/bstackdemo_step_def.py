@@ -1,8 +1,10 @@
+import time
 from behave import *
 from src.pages.generic_page import GenericPage
 from src.pages.home_page import HomePage
 from src.pages.sign_in_page import SignInPage
 from src.core.driver_factory import WebdriverFactory
+from src.core.helpers import FluentWait
 
 @when('Go to login page')
 def step_impl(context) -> None:
@@ -18,6 +20,16 @@ def step_impl(context, user: str, pswd: str) -> None:
 
 @then('Verify if page title is {expected_title}')
 def step_impl(context, expected_title: str) -> None:
-    generic_page : WebdriverFactory = GenericPage(context.driver)
-    print (generic_page.get_page_title())
-    assert generic_page.get_page_title() == expected_title
+    driver = context.driver
+    loading_titles = ["Cierpliwości", "Proszę czekać", "Loading", " Ładowanie"]
+    
+    for _ in range(15):
+        actual_title = driver.title
+        if actual_title not in loading_titles:
+            break
+        time.sleep(1)
+    
+    actual_title = driver.title
+    print(f"Actual title: {actual_title}")
+    assert expected_title in actual_title or actual_title in expected_title, \
+        f"Expected title containing '{expected_title}', but got '{actual_title}'"

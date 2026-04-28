@@ -1,7 +1,9 @@
+@demo
 Feature: Behave FW basic functionality
   Background:
     Given Start new "chrome" browser
 
+    @aurora
     Scenario: Demo test for AuroraCommerce
       Given Open "https://demo.auroracommerce.com" url
       When Click on menu item
@@ -23,7 +25,7 @@ Feature: Behave FW basic functionality
         |DEMO CATEGORY|
         |NEW IN|
 
-
+  @bstack
   Scenario Outline: Run a simple test on <url> web page
     Given Open "<url>" url
     When Go to login page
@@ -34,6 +36,7 @@ Feature: Behave FW basic functionality
       | url                      | title     |
       | https://bstackdemo.com/  | StackDemo |
 
+  @web
   Scenario Outline: Another simple test on <url> web page
     Given Open "<url>" url
     Then Verify if page title is <title>

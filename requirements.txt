@@ -2,6 +2,7 @@ allure-behave==2.14.2
 allure-python-commons==2.14.2
 attrs==25.3.0
 behave==1.2.6
+behavex==2.2.1
 certifi==2025.4.26
 h11==0.16.0
 idna==3.10
